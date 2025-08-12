@@ -10,7 +10,7 @@ It is intented to give newcommers a quick hands-on experience.
 
 | compilers & utilities | generators & simulations | PDF & FF | Analysis & Plot |
 | --- | --- | --- | --- |
-| [Assembly](README.md#Assembly), [C/C++](README.md#C/C++), [Fortran](README.md#Fortran), [Git](README.md#Git), [HDF5](README.md#HDF5), [HepMC](README.md#HepMC), [Python](README.md#Python), [TeXLive](README.md#TeXLive), [WSL](WSL/) | [MadGraph](README.md#MadGraph), [MCFM](README.md#MCFM), [NLOjet](README.md#NLOjet), [PYTHIA](README.md#PYTHIA) | [LHAPDF](README.md#LHAPDF) |[FastJet](README.md#FastJet), [ROOT](README.md#ROOT) |
+| [Assembly](README.md#Assembly), [C/C++](README.md#C/C++), [Fortran](README.md#Fortran), [Git](README.md#Git), [HDF5](README.md#HDF5), [HepMC](README.md#HepMC), [Python](README.md#Python), [TeXLive](README.md#TeXLive), [WSL](wsl/) | [MadGraph](madgraph/), [MCFM](README.md#MCFM), [NLOjet](README.md#NLOjet), [PYTHIA](README.md#PYTHIA) | [LHAPDF](lhapdf/) |[FastJet](fastjet/), [ROOT](root/) |
 
 ## Assembly
 
