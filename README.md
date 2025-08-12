@@ -10,7 +10,72 @@ It is intented to give newcommers a quick hands-on experience.
 
 | compilers & utilities | generators & simulations | PDF & FF | Analysis & Plot |
 | --- | --- | --- | --- |
-| [WSL](README.md#WSL) |  |  |  |
+| [Assembly](README.md#Assembly), [C/C++](README.md#C/C++), [Fortran](README.md#Fortran), [Git](README.md#Git), [HDF5](README.md#HDF5), [HepMC](README.md#HepMC), [Python](README.md#Python), [TeXLive](README.md#TeXLive), [WSL](README.md#WSL) | [MadGraph](README.md#MadGraph), [MCFM](README.md#MCFM), [NLOjet](README.md#NLOjet), [PYTHIA](README.md#PYTHIA) | [LHAPDF](README.md#LHAPDF) |[FastJet](README.md#FastJet), [ROOT](README.md#ROOT) |
+
+## Assembly
+
+Most (legacy) performance computing nowadays are written in Assembly codes.
+It is strongly recommended to install the GNU collection of compilers (GCC) and support free software.
+
+## C/C++
+
+Most performance computing nowadays are written in C/C++ codes.
+It is strongly recommended to install the GNU collection of compilers (GCC) and support free software.
+
+## FastJet
+
+Algorithm used to cluster partons to jets.
+
+## Fortran
+
+Most (older) performance computing nowadays are written in Fortran codes.
+It is strongly recommended to install the GNU collection of compilers (GCC) and support free software.
+
+## Git
+
+For version control, share your code with your collaborators, or just an online backup, Git is your best friend.
+It is better to have an editor that has its own GUI-like interface with Git, otherwise it will be painful to just remember those tedious commands.
+It may not work in China, but I guess most people use VPN anyways.
+
+## HDF5
+
+Compression algorithm.
+
+## HepMC
+
+This is useless.
+
+## LHAPDF
+
+PDF.
+
+## MadGraph
+
+Another event generator (maybe different shower ordering variable).
+
+## MCFM
+
+A Monte-Carlo (perturbative calculation) for different processes. Not heavy-ion.
+
+## NLOjet
+
+NLO perturbative calculation.
+
+## PYTHIA
+
+Popular event generator for pp collisions.
+
+## Python
+
+This is interesting.
+
+## ROOT
+
+This is a histogram plotter.
+
+## TeXLive
+
+This is compiler for LaTeX codes.
 
 ## WSL
 
