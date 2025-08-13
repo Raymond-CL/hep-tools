@@ -2,7 +2,7 @@
 
 FC = gfortran
 FFLAGS = -O2
-TARGET = ex_fortran
+TARGET = ex_fortran.exe
 SRC = main.f90
 
 .PHONY: all clean
