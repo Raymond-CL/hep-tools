@@ -1,87 +1,65 @@
 # hep-tools
 
-Common tools used in high-energy physics.
+A collection of commonly used tools in high-energy physics (HEP).
 
-At least these at the tools that I commonly use.
+This repository is intended to give newcomers a quick, hands-on introduction to a variety of HEP software packages and utilities.  
+For each tool, you will typically find:
 
-Most tools will include an installation script and an example usage code.
+- An **installation script** to set up the software.
+- An **example usage program** to verify the installation and demonstrate basic functionality.
 
-It is intented to give newcommers a quick hands-on experience.
+> [!NOTE]  
+> This repository is still under construction.  
+> Only tools with hyperlinks are currently available.
 
-| compilers & utilities | generators & simulations | PDF & FF | Analysis & Plot |
-| --- | --- | --- | --- |
-| [Assembly](README.md#Assembly), [C/C++](README.md#C/C++), [Fortran](README.md#Fortran), [Git](README.md#Git), [HDF5](README.md#HDF5), [HepMC](README.md#HepMC), [Python](README.md#Python), [TeXLive](README.md#TeXLive), [WSL](wsl/) | [MadGraph](madgraph/), [MCFM](README.md#MCFM), [NLOjet](README.md#NLOjet), [PYTHIA](README.md#PYTHIA) | [LHAPDF](lhapdf/) |[FastJet](fastjet/), [ROOT](root/) |
+---
 
-## Assembly
+## Categories and Tools
 
-Most (legacy) performance computing nowadays are written in Assembly codes.
-It is strongly recommended to install the GNU collection of compilers (GCC) and support free software.
+| Category      | Tool Names |
+| ------------- | ---------- |
+| **Compilers** | Assembly, C/C++, Fortran, Haskell, Python, Rust, TeXLive |
+| **Data Analysis** | FastJet, ROOT |
+| **Generators** | dijet, MadGraph, MCFM, NLOjet++, PYTHIA |
+| **Helper Utilities** | timer, vegas |
+| **PDF & FF** | LHAPDF |
+| **General Utilities** | Cuba, Git, HDF5, HepMC, WSL |
 
-## C/C++
+---
 
-Most performance computing nowadays are written in C/C++ codes.
-It is strongly recommended to install the GNU collection of compilers (GCC) and support free software.
+## Tool Descriptions
 
-## FastJet
+- **Assembly** – Low-level language close to machine code, used for small and highly optimized programs.
+- **C/C++** – Widely used programming languages for high-performance scientific computing.
+- **Cuba** – A library providing various algorithms for multidimensional numerical integration.
+- **dijet** – Leading-order calculation of \( pp \to \) dijet production cross sections.
+- **FastJet** – Jet clustering library for analyzing simulated or experimental high-energy collision data.
+- **Fortran** – A classic high-performance computing language still used in scientific applications.
+- **Git** – Version control system for code management, collaboration, and backup.
+- **Haskell** – A purely functional programming language with strong mathematical foundations.
+- **HDF5** – Data model, library, and file format for storing and managing large amounts of data efficiently.
+- **HepMC** – Event record format for Monte Carlo generators.
+- **LHAPDF** – Library providing access to a wide range of parton distribution functions (PDFs).
+- **MadGraph** – Event generator for high-energy physics processes.
+- **MCFM** – Monte Carlo for FeMtobarn processes; computes cross sections at leading and next-to-leading order.
+- **NLOjet++** – NLO jet production in perturbative QCD, developed by Zoltán Nagy.
+- **PYTHIA** – Popular and widely used event generator for high-energy collisions.
+- **Python** – High-level programming language with rich scientific computing libraries.
+- **ROOT** – Data analysis framework developed at CERN, featuring histogramming, fitting, and visualization tools.
+- **Rust** – Modern systems programming language focused on performance and memory safety.
+- **TeXLive** – Comprehensive TeX document production system.
+- **timer** – Lightweight utility class for measuring program execution time.
+- **vegas** – Monte Carlo algorithm for multidimensional numerical integration.
+- **WSL** – Windows Subsystem for Linux, enabling Linux binaries to run on Windows.
 
-Algorithm used to cluster partons to jets.
+---
 
-## Fortran
+## Purpose
 
-Most (older) performance computing nowadays are written in Fortran codes.
-It is strongly recommended to install the GNU collection of compilers (GCC) and support free software.
+The goal of this repository is to streamline the process of:
+- Installing essential HEP tools.
+- Providing quick-start examples for each tool.
+- Lowering the barrier for new researchers to become productive in a HEP software environment.
 
-## Git
+Contributions, bug reports, and suggestions are welcome.
 
-For version control, share your code with your collaborators, or just an online backup, Git is your best friend.
-It is better to have an editor that has its own GUI-like interface with Git, otherwise it will be painful to just remember those tedious commands.
-It may not work in China, but I guess most people use VPN anyways.
-
-## HDF5
-
-Compression algorithm.
-
-## HepMC
-
-This is useless.
-
-## LHAPDF
-
-PDF.
-
-## MadGraph
-
-Another event generator (maybe different shower ordering variable).
-
-## MCFM
-
-A Monte-Carlo (perturbative calculation) for different processes. Not heavy-ion.
-
-## NLOjet
-
-NLO perturbative calculation.
-
-## PYTHIA
-
-Popular event generator for pp collisions.
-
-## Python
-
-This is interesting.
-
-## ROOT
-
-This is a histogram plotter.
-
-## TeXLive
-
-This is compiler for LaTeX codes.
-
-## WSL
-
-In HEP, it is better to work in a Unix-like operating system.
-However, since I can't afford a Mac, I will have to run Linux inside Windows OS.
-This is where Windows Subsystem for Linux (WSL) comes to the rescue.
-The advantage of WSL is, it is fully integrated into Windows, a virtual machine (VM) is not necessary.
-The resource kernel is also integrated, you can see your running process from task manager.
-I've included a script in *powershell* to install WSL.
