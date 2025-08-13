@@ -1,41 +1,151 @@
-# Prerequisites
-*.d
+# ========================
+# General OS / Editor Junk
+# ========================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+*.swp
+*.swo
+*~
+*.bak
+*.tmp
+*.log
+.vscode/
+.idea/
 
-# Compiled Object files
+# ========================
+# Compiled / Build Artifacts (Fortran, C, C++, Rust, Assembly, Haskell)
+# ========================
+# Object and binary files
 *.slo
 *.lo
 *.o
 *.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Linker files
-*.ilk
-
-# Debugger Files
-*.pdb
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
 *.lai
 *.la
 *.a
 *.lib
-
-# Executables
+*.so
+*.dll
+*.dylib
 *.exe
 *.out
 *.app
 
+# Assembly listings
+*.i
+*.ii
+*.s
+*.asm
+*.lst
+
+# Build-related
+*.d
+*.gch
+*.pch
+*.pdb
+*.map
+*.exp
+
+# Linker files
+*.ilk
+
 # debug information files
 *.dwo
+
+# Fortran module files
+*.mod
+*.smod
+*.mod0
+
+# Rust backup
+*.rs.bk
+
+# Haskell interface & dynamic outputs
+*.hi
+*.dyn_o
+*.dyn_hi
+
+# Common build directories
+/build/
+/bin/
+/lib/
+/dist/
+/dist-newstyle/
+/target/
+/debug/
+/release/
+/stack-work/
+
+# ========================
+# Python
+# ========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Packaging
+*.egg
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+*.manifest
+*.spec
+
+# Jupyter notebooks
+.ipynb_checkpoints
+
+# ========================
+# Rust
+# ========================
+# Keep Cargo.lock if you want reproducible builds
+Cargo.lock
+
+# ========================
+# Haskell (Cabal / Stack)
+# ========================
+cabal.project.local
+cabal.sandbox.config
+.ghc.environment.*
+
+# ========================
+# TeX / LaTeX / TeX Live
+# ========================
+*.aux
+*.bbl
+*.blg
+*.brf
+*.idx
+*.ilg
+*.ind
+*.lof
+*.lot
+*.out
+*.toc
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+*.xdy
+*.tdo
+*.pdfsync
+*.run.xml
+*.bcf
+texput.log
+auto/
