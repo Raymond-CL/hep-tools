@@ -23,7 +23,7 @@ For each tool, you will typically find:
 | **Generators** | dijet, MadGraph, MCFM, NLOjet++, PYTHIA |
 | **Helper Utilities** | timer, vegas |
 | **PDF & FF** | LHAPDF |
-| **General Utilities** | Cuba, Git, HDF5, HepMC, WSL |
+| **General Utilities** | Cuba, Git, HDF5, HepMC, [WSL](/wsl/) |
 
 ---
 
@@ -50,16 +50,16 @@ For each tool, you will typically find:
 - **TeXLive** – Comprehensive TeX document production system.
 - **timer** – Lightweight utility class for measuring program execution time.
 - **vegas** – Monte Carlo algorithm for multidimensional numerical integration.
-- **WSL** – Windows Subsystem for Linux, enabling Linux binaries to run on Windows.
+- **[WSL](/wsl/)** – Windows Subsystem for Linux, enabling Linux binaries to run on Windows.
 
 ---
 
 ## Purpose
 
 The goal of this repository is to streamline the process of:
+
 - Installing essential HEP tools.
 - Providing quick-start examples for each tool.
 - Lowering the barrier for new researchers to become productive in a HEP software environment.
 
 Contributions, bug reports, and suggestions are welcome.
-
