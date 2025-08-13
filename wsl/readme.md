@@ -6,7 +6,7 @@ It also includes instructions for setting up a development workflow with **Visua
 
 ---
 
-## 1. Install WSL
+## Install WSL
 
 For detailed reference, see the official [WSL documentation](https://learn.microsoft.com/en-us/windows/wsl/).
 
@@ -58,7 +58,7 @@ You can set the default WSL version with `wsl --set-default-version <1|2>`.
 
 ---
 
-## 2. Install Visual Studio Code
+## Install Visual Studio Code
 
 Download and install VS Code from the [official website](https://code.visualstudio.com/).
 
@@ -80,7 +80,7 @@ After VS Code is installed:
 
 ---
 
-## 3. About System Resources
+## About System Resources
 
 Installing WSL effectively sets up a Linux environment inside Windows.
 

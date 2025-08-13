@@ -18,7 +18,7 @@ For each tool, you will typically find:
 
 | Category      | Tool Names |
 | ------------- | ---------- |
-| **Compilers** | Assembly, C/C++, Fortran, Haskell, Python, Rust, TeXLive |
+| **Compilers** | Assembly, C/C++, [Fortran](/fortran/), Haskell, Python, Rust, TeXLive |
 | **Data Analysis** | FastJet, ROOT |
 | **Generators** | dijet, MadGraph, MCFM, NLOjet++, PYTHIA |
 | **Helper Utilities** | timer, vegas |
@@ -34,7 +34,7 @@ For each tool, you will typically find:
 - **Cuba** – A library providing various algorithms for multidimensional numerical integration.
 - **dijet** – Leading-order calculation of \( pp \to \) dijet production cross sections.
 - **FastJet** – Jet clustering library for analyzing simulated or experimental high-energy collision data.
-- **Fortran** – A classic high-performance computing language still used in scientific applications.
+- **[Fortran](/fortran/)** – A classic high-performance computing language still used in scientific applications.
 - **Git** – Version control system for code management, collaboration, and backup.
 - **Haskell** – A purely functional programming language with strong mathematical foundations.
 - **HDF5** – Data model, library, and file format for storing and managing large amounts of data efficiently.
