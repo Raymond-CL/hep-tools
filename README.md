@@ -18,7 +18,7 @@ For each tool, you will typically find:
 
 | Category      | Tool Names |
 | ------------- | ---------- |
-| **Compilers** | Assembly, C/C++, [Fortran](/fortran/), Haskell, Python, Rust, TeXLive |
+| **Compilers** | Assembly, bench, C/C++, [Fortran](/fortran/), Haskell, Python, Rust, TeXLive |
 | **Data Analysis** | FastJet, ROOT |
 | **Generators** | dijet, MadGraph, MCFM, NLOjet++, PYTHIA |
 | **Helper Utilities** | timer, vegas |
@@ -30,6 +30,7 @@ For each tool, you will typically find:
 ## Tool Descriptions
 
 - **Assembly** – Low-level language close to machine code, used for small and highly optimized programs.
+- **bench** - A simple script and benchmark different programming language performance.
 - **C/C++** – Widely used programming languages for high-performance scientific computing.
 - **Cuba** – A library providing various algorithms for multidimensional numerical integration.
 - **dijet** – Leading-order calculation of \( pp \to \) dijet production cross sections.
