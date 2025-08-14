@@ -22,7 +22,7 @@ For each tool, you will typically find:
 | **Data Analysis** | FastJet, ROOT |
 | **Generators** | dijet, MadGraph, MCFM, NLOjet++, PYTHIA |
 | **Helper Utilities** | timer, vegas |
-| **PDF & FF** | LHAPDF |
+| **PDF & FF** | LHAPDF, CTEQ |
 | **General Utilities** | Cuba, Git, HDF5, HepMC, [WSL](/wsl/) |
 
 ---
@@ -33,6 +33,7 @@ For each tool, you will typically find:
 - **bench** - A simple script and benchmark different programming language performance.
 - **C/C++** – Widely used programming languages for high-performance scientific computing.
 - **Cuba** – A library providing various algorithms for multidimensional numerical integration.
+- **CTEQ-pdf** - Parton distribution function set by CTEQ collaboration.
 - **dijet** – Leading-order calculation of \( pp \to \) dijet production cross sections.
 - **FastJet** – Jet clustering library for analyzing simulated or experimental high-energy collision data.
 - **[Fortran](/fortran/)** – A classic high-performance computing language still used in scientific applications.
