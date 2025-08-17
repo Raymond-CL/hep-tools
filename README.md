@@ -12,8 +12,6 @@ For each tool, you will typically find:
 > This repository is still under construction.  
 > Only tools with hyperlinks are currently available.
 
----
-
 ## Categories and Tools
 
 | Category      | Tool Names |
@@ -25,8 +23,6 @@ For each tool, you will typically find:
 | **Math Libraries** | Cuba, GSL, NR |
 | **PDF & FF** | LHAPDF, CTEQ |
 | **General Utilities** | Git, HDF5, HepMC, [WSL](/wsl/) |
-
----
 
 ## Tool Descriptions
 
@@ -56,8 +52,6 @@ For each tool, you will typically find:
 - **timer** – Lightweight utility class for measuring program execution time.
 - **[vegas](/vegas/)** – Monte Carlo algorithm for multidimensional numerical integration.
 - **[WSL](/wsl/)** – Windows Subsystem for Linux, enabling Linux binaries to run on Windows.
-
----
 
 ## Purpose
 

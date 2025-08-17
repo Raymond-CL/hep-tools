@@ -4,8 +4,6 @@ This guide provides a **step-by-step procedure** for installing and using **Fort
 
 It also includes a **sample test program** and **Makefile** to verify your installation.
 
----
-
 ## Install a Fortran Compiler
 
 Fortran remains a core language in scientific computing, including many HEP simulation codes.
@@ -19,19 +17,25 @@ sudo apt install gfortran
 
 To check the compiler version, simply `gfortran --version`.
 
----
-
 ## Test Program
 
 This repository includes a `main.f90` demonstrating arrays, modules, and numerical operations.
 
 It uses the *law of large numbers* to estimate the expected value of a uniform random variable.
 
+It also shows the fast and simple **array operations** as compared to C/C++.
+
 The included `Makefile`` automates compilation.
 
 Build with `make` and run with `./ex_fortran`.
 
----
+## Extras
+
+If you have a large and complicated Fortran program with complex dependencies, you can install a simple program called **makedepf90** that creates Makefile dependency list for you.
+
+Install simply `sudo apt install makedepf90`.
+
+The usage is given in this [website](https://linux.die.net/man/1/makedepf90).
 
 ## References
 

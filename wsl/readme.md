@@ -4,8 +4,6 @@ This guide provides a **step-by-step procedure** for installing and configuring 
 
 It also includes instructions for setting up a development workflow with **Visual Studio Code**.
 
----
-
 ## Install WSL
 
 For detailed reference, see the official [WSL documentation](https://learn.microsoft.com/en-us/windows/wsl/).
@@ -56,8 +54,6 @@ You can set the default WSL version with `wsl --set-default-version <1|2>`.
 2. Verify the installation version with `hostnamectl` in WSL terminal.
 3. Update Ubuntu packages with `sudo apt update && sudo apt upgrade && sudo apt autoremove` command.
 
----
-
 ## Install Visual Studio Code
 
 Download and install VS Code from the [official website](https://code.visualstudio.com/).
@@ -77,8 +73,6 @@ After VS Code is installed:
 * WSL 1 and WSL 2 have different internal paths, but you can open the current directory in Windows Explorer by running `explorer.exe .` .
 
   The dot (`.`) refers to the current directory.
-
----
 
 ## About System Resources
 
