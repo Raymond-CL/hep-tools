@@ -21,9 +21,10 @@ For each tool, you will typically find:
 | **Compilers** | Assembly, bench, C/C++, [Fortran](/fortran/), Haskell, Python, Rust, TeXLive |
 | **Data Analysis** | FastJet, ROOT |
 | **Generators** | dijet, MadGraph, MCFM, NLOjet++, PYTHIA |
-| **Helper Utilities** | timer, vegas |
+| **Helper Utilities** | timer, [vegas](/vegas/) |
+| **Math Libraries** | Cuba, GSL, NR |
 | **PDF & FF** | LHAPDF, CTEQ |
-| **General Utilities** | Cuba, Git, HDF5, HepMC, [WSL](/wsl/) |
+| **General Utilities** | Git, HDF5, HepMC, [WSL](/wsl/) |
 
 ---
 
@@ -38,6 +39,7 @@ For each tool, you will typically find:
 - **FastJet** – Jet clustering library for analyzing simulated or experimental high-energy collision data.
 - **[Fortran](/fortran/)** – A classic high-performance computing language still used in scientific applications.
 - **Git** – Version control system for code management, collaboration, and backup.
+- **GSL** - GNU scientific library.
 - **Haskell** – A purely functional programming language with strong mathematical foundations.
 - **HDF5** – Data model, library, and file format for storing and managing large amounts of data efficiently.
 - **HepMC** – Event record format for Monte Carlo generators.
@@ -45,13 +47,14 @@ For each tool, you will typically find:
 - **MadGraph** – Event generator for high-energy physics processes.
 - **MCFM** – Monte Carlo for FeMtobarn processes; computes cross sections at leading and next-to-leading order.
 - **NLOjet++** – NLO jet production in perturbative QCD, developed by Zoltán Nagy.
+- **NR** - Numerical Recipe, a C/C++ and Fortran library.
 - **PYTHIA** – Popular and widely used event generator for high-energy collisions.
 - **Python** – High-level programming language with rich scientific computing libraries.
 - **ROOT** – Data analysis framework developed at CERN, featuring histogramming, fitting, and visualization tools.
 - **Rust** – Modern systems programming language focused on performance and memory safety.
 - **TeXLive** – Comprehensive TeX document production system.
 - **timer** – Lightweight utility class for measuring program execution time.
-- **vegas** – Monte Carlo algorithm for multidimensional numerical integration.
+- **[vegas](/vegas/)** – Monte Carlo algorithm for multidimensional numerical integration.
 - **[WSL](/wsl/)** – Windows Subsystem for Linux, enabling Linux binaries to run on Windows.
 
 ---
