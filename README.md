@@ -31,7 +31,7 @@ For each tool, you will typically find:
 - **C/C++** – Widely used programming languages for high-performance scientific computing.
 - **Cuba** – A library providing various algorithms for multidimensional numerical integration.
 - **CTEQ-pdf** - Parton distribution function set by CTEQ collaboration.
-- **dijet** – Leading-order calculation of \( pp \to \) dijet production cross sections.
+- **dijet** – Leading-order calculation of pp -> dijet production cross sections.
 - **FastJet** – Jet clustering library for analyzing simulated or experimental high-energy collision data.
 - **[Fortran](/fortran/)** – A classic high-performance computing language still used in scientific applications.
 - **Git** – Version control system for code management, collaboration, and backup.
