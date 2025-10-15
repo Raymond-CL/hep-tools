@@ -22,12 +22,11 @@ int main() {
     double binH = xmin * exp((i + 1) * dx);
     double x = (binL + binH) / 2.0;
 
-    std::cout << x << '\t' 
-      << x * ct18anlo.parton(0, x, Q) << '\t' 
-      << x * ct18anlo.parton(1, x, Q) << '\t' 
-      << x * ct18anlo.parton(2, x, Q) << '\t' 
-      << x * ct18anlo.parton(-1, x, Q) << '\t' 
-      << x * ct18anlo.parton(-2, x, Q) << '\t' << std::endl;
+    std::cout << x << '\t' << x * ct18anlo.parton(0, x, Q) << '\t'
+              << x * ct18anlo.parton(1, x, Q) << '\t'
+              << x * ct18anlo.parton(2, x, Q) << '\t'
+              << x * ct18anlo.parton(-1, x, Q) << '\t'
+              << x * ct18anlo.parton(-2, x, Q) << '\t' << std::endl;
   }
 
   // double ruv, rdv, ru, rd, rs, rc, rb, rg;
