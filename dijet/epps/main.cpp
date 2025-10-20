@@ -27,6 +27,7 @@ int main() {
               << x * ct18anlo.parton(2, x, Q) << '\t'
               << x * ct18anlo.parton(-1, x, Q) << '\t'
               << x * ct18anlo.parton(-2, x, Q) << '\t' << std::endl;
+              
   }
 
   // double ruv, rdv, ru, rd, rs, rc, rb, rg;

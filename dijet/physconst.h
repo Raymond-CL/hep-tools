@@ -24,15 +24,15 @@ constexpr double GeVfm = HBARC / GIGA / femto;
 constexpr double M_pro = 0.93827208816;
 constexpr double M_neu = 0.93956542052;
 constexpr double M_ele = 0.00051;
-constexpr double M_mu = 0.10566;
+constexpr double M_mu  = 0.10566;
 constexpr double M_tau = 1.77686;
-
 constexpr double Mp2 = M_pro * M_pro;
+constexpr double Me2 = M_ele * M_ele;
 
-constexpr double alphae = 1.0 / 137.036;
-constexpr double alphaesq = alphae * alphae;
-constexpr double a0 = 1.0 / 1.4142135624 / GeVfm;
-constexpr double a02 = a0 * a0;
-}  // namespace phys
+// coupling constants
+constexpr double Alphae0 = 1.0 / 137.036;
+constexpr double AlphaeZ = 1.0 / 127.94;  // at Z pole
+constexpr double Alphaesq = Alphae0 * Alphae0;
+}
 
 #endif
