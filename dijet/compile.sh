@@ -1,2 +1,3 @@
-g++ -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion \
-  -fopenmp -O3 main.cpp -o dijet.exe -lgsl
+g++ -c ct11pdf.cc
+g++ -Wall -Wextra -Wpedantic -O3 -c main.cpp
+g++ -fopenmp -o incjet ct11pdf.o main.o -lgsl
