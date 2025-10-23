@@ -1,6 +1,3 @@
-#ifdef _OPENMP
-#include <omp.h>
-#endif
 #include <gsl/gsl_monte.h>
 #include <gsl/gsl_monte_vegas.h>
 #include <gsl/gsl_sf_bessel.h>
@@ -16,6 +13,11 @@
 
 #include "ct11pdf.h"
 
+constexpr double Nc = 3.0;      // number of colors
+constexpr double Cf = 4.0 / 3.0; // Casimir factor for quarks
+constexpr double Ca = 3.0;      // Casimir factor for gluons
+constexpr double Tf = 0.5;      // trace normalization factor
+
 // shared parameters structure
 struct parameters {
   double CME;
@@ -24,44 +26,75 @@ struct parameters {
   cteqpdf ct18anlo;
 };
 
+// amplitude function shortcuts to speed up calculations
+static inline double ampA(double n1, double n2, double d) noexcept {
+  constexpr double CF_o_CA = Cf / Ca;
+  return CF_o_CA * (n1 * n1 + n2 * n2) / (d * d);
+}
+static inline double ampB(double n, double d1, double d2) noexcept {
+  constexpr double twoCF_o_CAsq = 2.0 * Cf / (Ca * Ca);
+  return ampA(n, d1, d2) + ampA(n, d2, d1) - twoCF_o_CAsq * (n * n) / (d1 * d2);
+}
+static inline double ampC(double n1, double n2, double d) noexcept {
+  constexpr double CFsq_o_CAsq = (Cf * Cf) / (Ca * Ca);
+  return CFsq_o_CAsq * (n1 * n1 + n2 * n2) / (n1 * n2) - ampA(n1, n2, d);
+}
+static inline double ampD(double n1, double n2, double n3) noexcept {
+  return Ca - n1 * n2 / (n3 * n3) - n1 * n3 / (n2 * n2) - n2 * n3 / (n1 * n1);
+}
+
 // integrand function
 double integrand(double* dx, size_t ndim, void* params) {
   (void)(ndim);  // unused
   auto* p = static_cast<parameters*>(params);
   // unpack variables
   double xa = dx[0];
-  // double yc = dx[1];
-  // double pt = dx[2];
-  // // momentum fractions
-  // double xt = 2.0 * pt / p->CME;
-  // double xamin = (xt * std::exp(+yc)) / (2.0 - xt * std::exp(-yc));
-  // if (xa < xamin || xa > 1.0) return 0.0;
-  // double xb = (xa * xt * std::exp(-yc)) / (2.0 * xa - xt * std::exp(+yc));
-  // if (xb < 0.0 || xb > 1.0) return 0.0;
-  // // Mandelstam variables
-  // double mans = +xa * xb * p->CME * p->CME;
-  // double mant = -xa * pt * p->CME * std::exp(-yc);
-  // double manu = -xb * pt * p->CME * std::exp(+yc);
-  // // scales
-  // double muren = pt;
-  // double mufac = muren;
-  // // coupling constant
-  // double alphaS = 0.2;  // fixed coupling for testing
+  double yc = dx[1];
+  double pt = dx[2];
+  // momentum fractions
+  double xt = 2.0 * pt / p->CME;
+  double xamin = (xt * std::exp(+yc)) / (2.0 - xt * std::exp(-yc));
+  if (xa < xamin || xa > 1.0) return 0.0;
+  double xb = (xa * xt * std::exp(-yc)) / (2.0 * xa - xt * std::exp(+yc));
+  if (xb < 0.0 || xb > 1.0) return 0.0;
+  // Mandelstam variables
+  double mans = +xa * xb * p->CME * p->CME;
+  double mant = -xa * pt * p->CME * std::exp(-yc);
+  double manu = -xb * pt * p->CME * std::exp(+yc);
+  // scales
+  double muren = pt;
+  double mufac = muren;
+  // coupling constant
+  double alphaS = p->ct18anlo.alphas(mufac); // running coupling
+  // parton distribution functions
+  // flavour: bb, cb, sb, db, ub, g, u, d, s, c, b
+  // index:   -5  -4  -3  -2  -1  0  1  2  3  4  5
+  // off-set: 0   1   2   3   4   5  6  7  8  9  10
+  const int nf = 5; // number of active quark flavors
+  double pdfa[2*nf + 1] = {0.0};
+  double pdfb[2*nf + 1] = {0.0};
+  for (int i = -nf; i <= +nf; ++i) {
+    pdfa[i + nf] = p->ct18anlo.parton(i, xa, mufac);
+    pdfb[i + nf] = p->ct18anlo.parton(i, xb, mufac);
+  } // off-set by nf
+  // matrix elements
 
-  // const int nf = 6;
-  // double pdfa[nf] = {0.0}, pdfb[nf] = {0.0};
-  // for (int i = 0; i < nf; i++) {
-  //   pdfa[i] = p->ct18anlo.parton(0, xa, mufac);
-  //   pdfb[i] = p->ct18anlo.parton(0, xb, mufac);
-  // }
-
-  // std::cout << "xa: " << xa << std::endl;
-
-  double sum = 0.0;
-  for (int i = 0; i < 11; i++) {
-    sum += xa * p->ct18anlo.parton(i - 5, xa, 10000.0);
+  // q + q' -> q + q'
+  double dis = 0.0;
+  for (int i = 1; i <= nf; ++i) {
+    for (int j = 1; j <= nf; ++j) {
+      if (i == j) continue;
+      dis += pdfa[nf + i] * pdfb[nf + j];
+      dis += pdfa[nf + i] * pdfb[nf - j];
+      dis += pdfa[nf - i] * pdfb[nf + j];
+      dis += pdfa[nf - i] * pdfb[nf - j];
+    }
   }
-  return sum;
+  dis *= alphaS * alphaS * ampA(mans,manu,mant);
+  dis *= alphaS * alphaS * ampA(mans,mant,manu);
+
+  double temp = (4.0 * M_PI * alphaS * alphaS) / (mans * mans);
+  return dis * temp;
 
   // matrix element
   // particle kinematics: a+b -> c+d
@@ -73,9 +106,6 @@ double integrand(double* dx, size_t ndim, void* params) {
   //   |        ---       |X
   // -----     /   \    --  \ 
 
-  // double temp = (4.0 * M_PI * alphaS * alphaS) / (mans * mans);
-  // double temp2 = 2.0 * xa * xb / (M_PI * (2.0 * xa - xt * std::exp(+yc)));
-  // return temp * temp2;
 }
 
 // main program
@@ -103,18 +133,18 @@ int main(int argc, char* argv[]) {
   p.ymax = +2.8;
 
   // integration settings
-  size_t ncall1 = 100000;
+  size_t ncall1 = 10000;
   size_t itm1 = 10;
-  size_t ncall2 = 1000000;
+  size_t ncall2 = 100000;
   size_t itm2 = 1;
 
   // define integration limits
-  const size_t ndim = 1;  // 3;
+  const size_t ndim = 3;
   double dx_lower[ndim];
   double dx_upper[ndim];
 
   // define histogram bins
-  const size_t nbin = 1;  // 16;
+  const size_t nbin = 16;
   double hmin = p.ptmin;
   double hmax = p.ptmax;
   double bin = (hmax - hmin) / static_cast<double>(nbin);
@@ -124,22 +154,9 @@ int main(int argc, char* argv[]) {
   string pdffile = "i2TAn2.00.pds";
   p.ct18anlo.setct11(pdffile);
 
-// define OpenMP parallel region
-#ifdef _OPENMP
-#pragma omp parallel for
-#endif
   // perform integration loop
   for (size_t i = 0; i < nbin; ++i) {
-// print current bin info
-#ifdef _OPENMP
-#pragma omp critical
-    // {
-    std::cout << "Working on bin: " << i
-              << "\t under thread: " << omp_get_thread_num() << std::endl;
-// }
-#else
     std::cout << "Working on bin: " << i << std::endl;
-#endif
 
     // define bin parameters
     double binL = hmin + static_cast<double>(i) * bin;
@@ -149,20 +166,17 @@ int main(int argc, char* argv[]) {
 
     // lower limits
     dx_lower[0] = 0.0;
-    // dx_lower[1] = p.ymin;
-    // dx_lower[2] = binL;
+    dx_lower[1] = p.ymin;
+    dx_lower[2] = binL;
     // upper limits
     dx_upper[0] = 1.0;
-    // dx_upper[1] = p.ymax;
-    // dx_upper[2] = binR;
-
-    // local kinematics object (copied values from global p)
-    parameters p_local = p;
+    dx_upper[1] = p.ymax;
+    dx_upper[2] = binR;
 
     // local GSL monte rng and state
     gsl_rng* r = gsl_rng_alloc(gsl_rng_default);
     gsl_monte_vegas_state* s = gsl_monte_vegas_alloc(ndim);
-    gsl_monte_function gmf = {&integrand, ndim, &p_local};
+    gsl_monte_function gmf = {&integrand, ndim, &p};
     gsl_monte_vegas_params vp;
 
     // warmup run
@@ -186,7 +200,7 @@ int main(int argc, char* argv[]) {
     gsl_rng_free(r);
 
     // store result and error in array
-    results[i] = res; // / bin;  // normalize by bin width
+    results[i] = res / bin;  // normalize by bin width
     errors[i] = err;
   }
 
