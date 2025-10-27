@@ -18,11 +18,12 @@ For each tool, you will typically find:
 | ------------- | ---------- |
 | **Compilers** | Assembly, bench, C/C++, [Fortran](/fortran/), Haskell, Python, Rust, TeXLive |
 | **Data Analysis** | FastJet, ROOT |
-| **Generators** | dijet, MadGraph, MCFM, NLOjet++, PYTHIA |
+| **Generators** | MadGraph, MCFM, NLOjet++, PYTHIA |
 | **Helper Utilities** | timer, [vegas](/vegas/) |
 | **Math Libraries** | Cuba, GSL, NR |
 | **PDF & FF** | LHAPDF, CTEQ |
 | **General Utilities** | Git, HDF5, HepMC, [WSL](/wsl/) |
+| **X-sec calculation** | [incjet](/incjet/) |
 
 ## Tool Descriptions
 
@@ -31,7 +32,6 @@ For each tool, you will typically find:
 - **C/C++** – Widely used programming languages for high-performance scientific computing.
 - **Cuba** – A library providing various algorithms for multidimensional numerical integration.
 - **CTEQ-pdf** - Parton distribution function set by CTEQ collaboration.
-- **dijet** – Leading-order calculation of pp -> dijet production cross sections.
 - **FastJet** – Jet clustering library for analyzing simulated or experimental high-energy collision data.
 - **[Fortran](/fortran/)** – A classic high-performance computing language still used in scientific applications.
 - **Git** – Version control system for code management, collaboration, and backup.
@@ -39,6 +39,7 @@ For each tool, you will typically find:
 - **Haskell** – A purely functional programming language with strong mathematical foundations.
 - **HDF5** – Data model, library, and file format for storing and managing large amounts of data efficiently.
 - **HepMC** – Event record format for Monte Carlo generators.
+- **[incjet](/incjet/)** – Leading-order (LO) calculation of pp->jet+X production cross sections.
 - **LHAPDF** – Library providing access to a wide range of parton distribution functions (PDFs).
 - **MadGraph** – Event generator for high-energy physics processes.
 - **MCFM** – Monte Carlo for FeMtobarn processes; computes cross sections at leading and next-to-leading order.
