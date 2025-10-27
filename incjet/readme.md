@@ -4,7 +4,8 @@ Computes the leading-order cross-section of single inclusive jet production.
 
 ## Example run
 
-A compile script `compile.sh` is provided.
+A fetch script `fetch.sh` is provided to download and get the PDF needed for the calculation.
+A compile script `compile.sh` is provided to create the executable.
 Run the produced `incjet.exe` executable for results, which will also be output to `results.txt` file.
 
 * Use 2->2 matrix element, and count both jets (inclusive).

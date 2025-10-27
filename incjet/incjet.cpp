@@ -190,8 +190,8 @@ double integrand(double* dx, size_t ndim, void* params) {
   double ampsq_to_dsdt = PI * alphaS * alphaS / (mans * mans);
   // pre-factor from momentum fraction 
   double pre_factor = 2.0 / PI * xa * xb / (2.0 * xa - xt * std::exp(+yc));
-  // Jacobian for pt spectrum
-  double jacobian = 2.0 * pt * PI * alphaS;
+  // Jacobian: E*d^3σ/d^3p = 1/(2*pi*pt) * d^2σ/(dpt dy)
+  double jacobian = 2.0 * PI * pt;
   // final differential cross section
   double diff_cs = jacobian * pre_factor * ampsq_to_dsdt * total_amp_sq;
   // convert dsig/dpt to dsig/dpt/dy
@@ -216,11 +216,11 @@ int main(int argc, char* argv[]) {
   gsl_rng_env_setup();
   // set parameters (usually from input data file)
   parameters p;
-  p.CME = 5020.0;       // 2760.0, 5020.0
-  p.ptmin = 40.0;       // 30, 40
-  p.ptmax = 1000.0;      // 500, 1000
-  p.ymin = -2.8;        // -2.1, -2.8
-  p.ymax = +2.8;        // +2.1, +2.8
+  p.CME = 2760.0;       // 2760.0, 5020.0
+  p.ptmin = 30.0;       // 30, 40
+  p.ptmax = 500.0;      // 500, 1000
+  p.ymin = -2.1;        // -2.1, -2.8
+  p.ymax = +2.1;        // +2.1, +2.8
   p.do_Qjet = true;
   p.do_Gjet = true;
   // integration settings (usually from input data file)
@@ -233,7 +233,7 @@ int main(int argc, char* argv[]) {
   double dx_lower[ndim];
   double dx_upper[ndim];
   // define histogram bins
-  const size_t nbin = 192;  // 188, 192
+  const size_t nbin = 188;  // 188, 192
   double hmin = p.ptmin;
   double hmax = p.ptmax;
   double bin = (hmax - hmin) / static_cast<double>(nbin);
