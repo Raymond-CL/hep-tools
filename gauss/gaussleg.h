@@ -1,0 +1,152 @@
+#ifndef GAUSSLEG_H
+#define GAUSSLEG_H
+
+#include <array>
+
+class GaussLeg {
+ private:
+  // 4-point nodes and weights
+  static constexpr std::array<double, 2> x4 = {0.3399810435848563,
+                                               0.8611363115940526};
+
+  static constexpr std::array<double, 2> w4 = {0.6521451548625461,
+                                               0.3478548451374538};
+
+  // 8-point nodes and weights
+  static constexpr std::array<double, 4> x8 = {
+      0.1834346424956498, 0.5255324099163290, 0.7966664774136267,
+      0.9602898564975363};
+  static constexpr std::array<double, 4> w8 = {
+      0.3626837833783620, 0.3137066458778873, 0.2223810344533745,
+      0.1012285362903763};
+
+  // 16-point nodes and weights
+  static constexpr std::array<double, 8> x16 = {
+      0.0950125098376374, 0.2816035507792589, 0.4580167776572274,
+      0.6178762444026438, 0.7554044083550030, 0.8656312023878318,
+      0.9445750230732326, 0.9894009349916499};
+  static constexpr std::array<double, 8> w16 = {
+      0.1894506104550685, 0.1826034150449236, 0.1691565193950025,
+      0.1495959888165767, 0.1246289712555339, 0.0951585116824928,
+      0.0622535239386479, 0.0271524594117541};
+
+  // 32-point nodes and weights
+  static constexpr std::array<double, 16> x32 = {
+      0.0483076656877383, 0.1444719615827965, 0.2392873622521371,
+      0.3318686022821277, 0.4213512761306353, 0.5068999089322294,
+      0.5877157572407623, 0.6630442669302152, 0.7321821187402897,
+      0.7944837959679424, 0.8493676137325700, 0.8963211557660521,
+      0.9349060759377397, 0.9647622555875064, 0.9856115115452684,
+      0.9972638618494816};
+  static constexpr std::array<double, 16> w32 = {
+      0.0965400885147278, 0.0956387200792749, 0.0938443990808046,
+      0.0911738786957639, 0.0876520930044038, 0.0833119242269467,
+      0.0781938957870703, 0.0723457941088485, 0.0658222227763618,
+      0.0586840934785355, 0.0509980592623762, 0.0428358980222267,
+      0.0342738629130214, 0.0253920653092621, 0.0162743947309057,
+      0.0070186100094701};
+
+  // 64-point nodes and weights
+  static constexpr std::array<double, 32> x64 = {
+      0.0243502926634244, 0.0729931217877990, 0.1214628192961206,
+      0.1696444204239928, 0.2174236437400071, 0.2646871622087674,
+      0.3113228719902110, 0.3572201583376681, 0.4022701579639916,
+      0.4463660172534641, 0.4894031457070530, 0.5312794640198946,
+      0.5718956462026340, 0.6111553551723933, 0.6489654712546573,
+      0.6852363130542333, 0.7198818501716109, 0.7528199072605319,
+      0.7839723589433414, 0.8132653151227975, 0.8406292962525803,
+      0.8659993981540928, 0.8893154459951141, 0.9105221370785028,
+      0.9295691721319396, 0.9464113748584028, 0.9610087996520538,
+      0.9733268277899110, 0.9833362538846260, 0.9910133714767443,
+      0.9963401167719553, 0.9993050417357722};
+  static constexpr std::array<double, 32> w64 = {
+      0.0486909570091397, 0.0485754674415034, 0.0483447622348030,
+      0.0479993885964583, 0.0475401657148303, 0.0469681828162100,
+      0.0462847965813144, 0.0454916279274181, 0.0445905581637566,
+      0.0435837245293235, 0.0424735151236536, 0.0412625632426235,
+      0.0399537411327203, 0.0385501531786156, 0.0370551285402400,
+      0.0354722132568824, 0.0338051618371416, 0.0320579283548516,
+      0.0302346570724025, 0.0283396726142595, 0.0263774697150547,
+      0.0243527025687109, 0.0222701738083833, 0.0201348231535302,
+      0.0179517157756973, 0.0157260304760247, 0.0134630478967186,
+      0.0111681394601311, 0.0088467598263639, 0.0065044579689784,
+      0.0041470332605625, 0.0017832807216964};
+
+ public:
+  // 4-point integration
+  template <typename Func>
+  static double integrate4(double a, double b, Func&& f) {
+    constexpr int half_n = 2;
+    double d_half = (b - a) / 2.0;
+    double sum = 0.0;
+    for (int i = 0; i < half_n; ++i) {
+      double z1 = a + d_half * (1.0 - x4[i]);
+      double z2 = a + d_half * (1.0 + x4[i]);
+      double w_scaled = d_half * w4[i];
+      sum += w_scaled * f(z1) + w_scaled * f(z2);
+    }
+    return sum;
+  }
+
+  // 8-point integration
+  template <typename Func>
+  static double integrate8(double a, double b, Func&& f) {
+    constexpr int half_n = 4;
+    double d_half = (b - a) / 2.0;
+    double sum = 0.0;
+    for (int i = 0; i < half_n; ++i) {
+      double z1 = a + d_half * (1.0 - x8[i]);
+      double z2 = a + d_half * (1.0 + x8[i]);
+      double w_scaled = d_half * w8[i];
+      sum += w_scaled * f(z1) + w_scaled * f(z2);
+    }
+    return sum;
+  }
+
+  // 16-point integration
+  template <typename Func>
+  static double integrate16(double a, double b, Func&& f) {
+    constexpr int half_n = 8;
+    double d_half = (b - a) / 2.0;
+    double sum = 0.0;
+    for (int i = 0; i < half_n; ++i) {
+      double z1 = a + d_half * (1.0 - x16[i]);
+      double z2 = a + d_half * (1.0 + x16[i]);
+      double w_scaled = d_half * w16[i];
+      sum += w_scaled * f(z1) + w_scaled * f(z2);
+    }
+    return sum;
+  }
+
+  // 32-point integration
+  template <typename Func>
+  static double integrate32(double a, double b, Func&& f) {
+    constexpr int half_n = 16;
+    double d_half = (b - a) / 2.0;
+    double sum = 0.0;
+    for (int i = 0; i < half_n; ++i) {
+      double z1 = a + d_half * (1.0 - x32[i]);
+      double z2 = a + d_half * (1.0 + x32[i]);
+      double w_scaled = d_half * w32[i];
+      sum += w_scaled * f(z1) + w_scaled * f(z2);
+    }
+    return sum;
+  }
+
+  // 64-point integration
+  template <typename Func>
+  static double integrate64(double a, double b, Func&& f) {
+    constexpr int half_n = 32;
+    double d_half = (b - a) / 2.0;
+    double sum = 0.0;
+    for (int i = 0; i < half_n; ++i) {
+      double z1 = a + d_half * (1.0 - x64[i]);
+      double z2 = a + d_half * (1.0 + x64[i]);
+      double w_scaled = d_half * w64[i];
+      sum += w_scaled * f(z1) + w_scaled * f(z2);
+    }
+    return sum;
+  }
+};
+
+#endif  // GAUSSLEG_H

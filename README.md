@@ -19,7 +19,7 @@ For each tool, you will typically find:
 | **Compilers** | Assembly, bench, C/C++, [Fortran](/fortran/), Haskell, Python, Rust, TeXLive |
 | **Data Analysis** | FastJet, ROOT |
 | **Generators** | MadGraph, MCFM, NLOjet++, PYTHIA |
-| **Helper Utilities** | timer, [vegas](/vegas/) |
+| **Helper Utilities** | [gauss](/gauss/), timer, [vegas](/vegas/) |
 | **Math Libraries** | Cuba, GSL, NR |
 | **PDF & FF** | LHAPDF, CTEQ |
 | **General Utilities** | Git, HDF5, HepMC, [WSL](/wsl/) |
@@ -34,6 +34,7 @@ For each tool, you will typically find:
 - **CTEQ-pdf** - Parton distribution function set by CTEQ collaboration.
 - **FastJet** – Jet clustering library for analyzing simulated or experimental high-energy collision data.
 - **[Fortran](/fortran/)** – A classic high-performance computing language still used in scientific applications.
+- **[gauss](/gauss/)** - A C++ class for Gauss-Legendre 1D integration.
 - **Git** – Version control system for code management, collaboration, and backup.
 - **GSL** - GNU scientific library.
 - **Haskell** – A purely functional programming language with strong mathematical foundations.
