@@ -1,0 +1,1 @@
+gfortran -o test.exe main.f90 -lcuba
